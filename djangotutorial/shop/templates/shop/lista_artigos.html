@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Artigos Disponíveis</title>
+</head>
+<body>
+    <h1>Lista de Artigos</h1>
+
+    {% for artigo in artigos %}
+        <div>
+            <h2>{{ artigo.nome }}</h2>
+            <p><strong>Preço:</strong> {{ artigo.preco }} €</p>
+            <p><strong>Descrição:</strong> {{ artigo.descricao }}</p>
+            <p>
+                <strong>Categoria:</strong>
+                <a href="{% url 'artigos_por_categoria' artigo.categoria.id %}">
+                    {{ artigo.categoria.nome }}
+                </a>
+            </p>
+            <p>
+                <strong>Vendedor:</strong>
+                <a href="{% url 'perfil_vendedor' artigo.vendedor.id %}">
+                    {{ artigo.vendedor.nome }}
+                </a>
+            </p>
+            <hr>
+        </div>
+    {% empty %}
+        <p>Não existem artigos disponíveis.</p>
+    {% endfor %}
+</body>
+</html>

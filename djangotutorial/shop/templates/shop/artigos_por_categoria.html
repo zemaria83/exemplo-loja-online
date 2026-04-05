@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Artigos por Categoria</title>
+</head>
+<body>
+    <h1>Categoria: {{ categoria.nome }}</h1>
+    <p>{{ categoria.descricao }}</p>
+
+    {% for artigo in artigos %}
+        <div>
+            <h2>{{ artigo.nome }}</h2>
+            <p><strong>Preço:</strong> {{ artigo.preco }} €</p>
+            <p><strong>Descrição:</strong> {{ artigo.descricao }}</p>
+            <hr>
+        </div>
+    {% empty %}
+        <p>Não existem artigos nesta categoria.</p>
+    {% endfor %}
+
+    <p><a href="{% url 'lista_artigos' %}">Voltar à lista de artigos</a></p>
+</body>
+</html>

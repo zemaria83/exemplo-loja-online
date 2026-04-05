@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil do Vendedor</title>
+</head>
+<body>
+    <h1>Vendedor: {{ vendedor.nome }}</h1>
+    <p><strong>Descrição:</strong> {{ vendedor.descricao }}</p>
+    <p><strong>Data de inscrição:</strong> {{ vendedor.data_de_criacao }}</p>
+
+    <h2>Artigos deste vendedor</h2>
+
+    {% for artigo in artigos %}
+        <div>
+            <h3>{{ artigo.nome }}</h3>
+            <p><strong>Preço:</strong> {{ artigo.preco }} €</p>
+            <p><strong>Descrição:</strong> {{ artigo.descricao }}</p>
+            <hr>
+        </div>
+    {% empty %}
+        <p>Este vendedor não tem artigos.</p>
+    {% endfor %}
+
+    <p><a href="{% url 'lista_artigos' %}">Voltar à lista de artigos</a></p>
+</body>
+</html>
